@@ -1,15 +1,12 @@
 const Model = require('../models/index')
 const View = require('../views/view')
-class ArticleController {
-    static add(title, body, AuthorId, TagId) {
-        Model.Article.create({
-            title: title,
-            body: body,
-            AuthorId: AuthorId,
-            TagId: TagId
+class TagController {
+    static add(name) {
+        Model.Tag.create({
+            name: name
         })
-            .then(function () {
-                View.showData(`Data successfully registered`)
+            .then(function (tag) {
+                View.showData(`Data with tag ${tag.name} successfully registered`)
                 process.exit()
             })
             .catch(function (err) {
@@ -17,13 +14,13 @@ class ArticleController {
             })
     }
     static findOne(value) {
-        Model.Article.findOne({
+        Model.Tag.findOne({
             where: {
                 id: value
             }
         })
-            .then(function (article) {
-                View.findOne(article)
+            .then(function (tag) {
+                View.findOne(tag)
                 process.exit()
             })
             .catch(function (err) {
@@ -31,9 +28,9 @@ class ArticleController {
             })
     }
     static findAll() {
-        Model.Article.findAll()
-            .then(function (articles) {
-                View.showFindAll(articles)
+        Model.Tag.findAll()
+            .then(function (tags) {
+                View.showFindAll(tags)
             })
         process.exit()
             .catch(function (err) {
@@ -45,7 +42,7 @@ class ArticleController {
         for (let i = 0; i < input.length; i += 2) {
             option[input[i]] = input[i + 1]
         }
-        Model.Article.update(option, {
+        Model.Tag.update(option, {
             where: {
                 id: id
             }
@@ -59,7 +56,7 @@ class ArticleController {
             })
     }
     static delete(id) {
-        Model.Article.destroy({
+        Model.Tag.destroy({
             where: {
                 id: id
             }
@@ -75,4 +72,4 @@ class ArticleController {
 }
 
 
-module.exports = ArticleController
+module.exports = TagController
