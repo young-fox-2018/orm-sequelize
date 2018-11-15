@@ -1,11 +1,12 @@
+const chalk = require('chalk');
 class View{
     static viewError(err) {
-        console.log(err);
+        console.log(chalk.blue(err));
         
     }
 
     static viewData(data) {
-        console.log(data);
+        console.log(chalk.blue(data));
         
     }
 }

@@ -27,7 +27,7 @@ class Controller {
 
                     //TODO: 
                     case "update":
-                        ControllerArticle.update(options)
+                        ControllerArticle.update(options, options[options.length - 1])
                         break;
 
                     case "delete":
@@ -51,7 +51,7 @@ class Controller {
                         break;
 
                     case "update":
-
+                        ControllerAuthor.update(options, options[options.length - 1])
                         break;
 
                     case "delete":
@@ -76,7 +76,7 @@ class Controller {
 
                     //TODO:
                     case "update":
-
+                        ControllerTag.update(options, options[options.length - 1])
                         break;
 
                     case "delete":
