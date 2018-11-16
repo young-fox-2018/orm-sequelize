@@ -1,6 +1,8 @@
 const Model = require('../models')
 const Author = Model.Author
 const View = require('../Views/View')
+const Sequelize = require('sequelize')
+const Op = Sequelize.Op;
 
 class authorController{
 
@@ -34,6 +36,24 @@ class authorController{
              View.display(data.dataValues)
          })
          .catch(err =>{
+             View.displayError(err)
+         })
+    }
+
+    static findTeens(){
+        Author.findAll({
+            where:{
+                age:
+                {
+                    [Op.between]: [11, 19]
+                }  
+            }
+        })
+         .then(data => {
+            let youngAuthors = data.map(dataI => dataI.dataValues)
+            View.display(youngAuthors)
+         })
+         .catch(err => {
              View.displayError(err)
          })
     }

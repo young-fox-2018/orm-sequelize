@@ -1,6 +1,8 @@
 const Model = require('../models')
 const Article = Model.Article
 const View = require('../Views/View')
+const Sequelize = require('sequelize')
+const Op = Sequelize.Op;
 
 class articleController{
     
@@ -33,6 +35,24 @@ class articleController{
              View.display(data.dataValues)
          })
          .catch(err =>{
+             View.displayError(err)
+         })
+    }
+
+    static findExpress(){
+        Article.findAll({
+            where:{
+                title:
+                {
+                    [Op.iLike]: '%express%'
+                }  
+            }
+        })
+         .then(data => {
+            let expressArticle = data.map(dataI => dataI.dataValues)
+            View.display(expressArticle)
+         })
+         .catch(err => {
              View.displayError(err)
          })
     }

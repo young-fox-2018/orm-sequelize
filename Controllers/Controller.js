@@ -15,6 +15,10 @@ class Controller{
                     authorController.find(input)
                 }
 
+                else if(cmd[1] === "findTeens"){
+                    authorController.findTeens(input)
+                }
+
                 else if(cmd[1] === "read_all"){
                     authorController.show()
                 }
@@ -36,6 +40,10 @@ class Controller{
 
                 else if(cmd[1] === "read_one"){
                     articleController.find(input)
+                }
+
+                else if(cmd[1] === "findExpress"){
+                    articleController.findExpress(input)
                 }
 
                 else if(cmd[1] === "read_all"){
