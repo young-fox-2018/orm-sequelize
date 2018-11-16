@@ -9,16 +9,16 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       first_name: {
-        type: Sequelize.CHAR
+        type: Sequelize.STRING
       },
       last_name: {
-        type: Sequelize.CHAR
+        type: Sequelize.STRING
       },
       religion: {
-        type: Sequelize.CHAR
+        type: Sequelize.STRING
       },
       gender: {
-        type: Sequelize.CHAR
+        type: Sequelize.STRING
       },
       age: {
         type: Sequelize.INTEGER

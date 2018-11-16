@@ -29,6 +29,7 @@ class Controller{
     artcle delete -> delete<space> "masukkan id author" \n
     `)
   }
+
   //Success add data into table
   static add(input) {
     if(input[0] === "author"){
@@ -47,6 +48,7 @@ class Controller{
         Author.create(obj)
           .then(data =>{
             View.display(`Succes adding data into ${input[0]}` , data.dataValues)
+            process.exit()
           })
           .catch(err => {
             View.display(`Error in adding data` , err)
@@ -67,6 +69,7 @@ class Controller{
         Article.create(obj)
           .then(data =>{
             View.display(`Succes adding data into ${input[0]}` , data.dataValues)
+            process.exit()
           })
           .catch(err => {
             View.display(`Error in adding data` , err)
@@ -84,6 +87,7 @@ class Controller{
         Tag.create(obj)
           .then(data =>{
             View.display(`Succes adding data into ${input[0]}` , data.dataValues)
+            process.exit()
           })
           .catch(err => {
             View.display(`Error in adding data` , err)
@@ -107,6 +111,7 @@ class Controller{
       } else {
         const result = data.map(element => element.dataValues)
         View.display(result)
+        process.exit()
       }
     })
     .catch(err => {
@@ -121,6 +126,7 @@ class Controller{
         } else {
           const result =data.map(element => element.dataValues)
           View.display(result)
+          process.exit()
         }
       })
       .catch(err => {
@@ -132,8 +138,9 @@ class Controller{
         if(data == null){
           View.display(`Data not found!`)
         } else {
-          const result =data.map(element => element.dataValues)
+          const result = data.map(element => element.dataValues)
           View.display(result)
+          process.exit()
         }
       })
       .catch(err => {
@@ -148,25 +155,28 @@ class Controller{
 
     if(input.length == 3) {
       if(input[0] == "author"){
-        Author.findOne({id: input[2]})
+        Author.findOne({where: {id:input[2]}})
           .then(data => {
             View.display(`Success finding data :` , data.dataValues)
+            process.exit()
           })
           .catch(err => {
             View.display(`Error in finding data : ` , err)
           })
       } else if(input[0] == "article"){
-        Article.findOne({id: input[2]})
+        Article.findOne({where: {id:input[2]}})
         .then(data => {
           View.display(`Success finding data :` , data.dataValues)
+          process.exit()
         })
         .catch(err => {
           View.display(`Error in finding data : ` , err)
         })
       } else if(input[0] == "tag") {
-        Tag.findOne({id: input[2]})
+        Tag.findOne({where: {id:input[2]}})
         .then(data => {
           View.display(`Success finding data :` , data.dataValues)
+          process.exit()
         })
         .catch(err => {
           View.display(`Error in finding data : ` , err)
@@ -180,7 +190,105 @@ class Controller{
   }
 
   static update(input) {
+    if(input[0] == "author") {
+      if(input.length !== 5 ) {
+        View.display(`Error please input correct to UPDATE Author`)
+      } else {
+        let obj = {
+          [input[2]]: input[3]
+        }
+        Author.update(obj ,{where:{id:input[4]}})
+          .then(data => {
+            View.display(`Success update data into Author`)
+            process.exit()
+          })
+          .catch(err => {
+            View.display(`Error updating data into Author` , err)
+          })
+      }
+    } else if(input[0] == "article"){
+      if(input.length !== 5 ) {
+        View.display(`Error please input correct to UPDATE Article `)
+      } else {
+        let obj = {
+          [input[2]]: input[3]
+          
+        }
+        Article.update(obj,{where:{id:input[4]}})
+          .then(data => {
+            View.display(`Success update data into Article`)
+            process.exit()
+          })
+          .catch(err => {
+            View.display(`Error updating data into Article` , err)
+          })
+      }
+    } else if (input[0] == "tag") {
+      if(input.length !== 5 ) {
+        View.display(`Error please input correct to UPDATE Tag `)
+      } else {
+        let obj = {
+          [input[2]]: input[3]
+        }
+        Tag.update(obj,{where:{id:input[4]}})
+          .then(data => {
+            View.display(`Success update data into Tag`)
+            process.exit()
+          })
+          .catch(err => {
+            View.display(`Error updating data into Tag` , err)
+          })
+      }
 
+    } else {
+      View.display(`Error there is no such a table to UPDATE!`)
+    }
+  }
+
+  static erase(input) {
+    if(input[0]== "author"){
+      if(input.length !== 3) {
+        View.display(`Error please input correct data to delete Author`)
+      } else {
+        Author.destroy({where:{id: input[2]}})
+          .then(data => {
+            View.display(`success deleting data id: ${input[2]} of Author`)
+            process.exit()
+          })
+          .catch(err => {
+            View.display(`Error erasing data from Author` , err)
+          })
+      }
+    } else if(input[0] == "article") {
+      if(input.length !== 3) {
+        View.display(`Error please input correct data to delete Article`)
+      } else {
+        Article.destroy({where:{id: input[2]}})
+          .then(data => {
+            View.display(`success deleting data id: ${input[2]} of Article`)
+            process.exit()
+          })
+          .catch(err => {
+            View.display(`Error erasing data from Article` , err)
+          })
+      }
+    } else if(input[0] == "tag") {
+      if(input.length !== 3) {
+        View.display(`Error please input correct data to delete Tag`)
+      } else {
+        Tag.destroy({where:{id: input[2]}})
+          .then(data => {
+            View.display(`success deleting data id: ${input[2]} of Tag`)
+            process.exit()
+          })
+          .catch(err => {
+            View.display(`Error erasing data from Tag` , err)
+          })
+      }
+
+    } else {
+      View.display(`Error the is no such table to delete`)
+    }
   }
 }
 
