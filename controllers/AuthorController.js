@@ -22,7 +22,7 @@ class AuthorController {
 
     static read_one(id) {
         let obj = {
-            id: id
+            where: {id: id}
         }
         Author.findOne(obj)
             .then(data => {
@@ -69,16 +69,6 @@ class AuthorController {
     }
 
     static delete(id) {
-        // let obj = {
-        //     id: id
-        // }
-        // Author.destroy(obj)
-            // .then(data => {
-            //     View.display(`Sucsessfully updated data`);
-            // })
-            // .catch(err => {
-            //     View.displayErr(err);
-            // })
         Author.destroy({where: {id: id}})
             .then(() => {
                 View.display(`Sucsessfully deleted data`);

@@ -28,19 +28,19 @@ switch (argv[0]) {
     case "tag":
         switch (argv[1]) {
             case "add":
-                TagController.add()
+                TagController.add(argv[2])
                 break;
             case "read_one":
-                TagController.read_one()
+                TagController.read_one(argv[2])
                 break;
             case "read_all":
                 TagController.read_all()
                 break;
             case "update":
-                TagController.update()
+                TagController.update(argv[2], argv.slice(3))
                 break;
             case "delete":
-                TagController.delete()
+                TagController.delete(argv[2])
                 break;
             default:
                 break;
@@ -49,19 +49,19 @@ switch (argv[0]) {
     case "article":
     switch (argv[1]) {
         case "add":
-            ArticleController.add()
+            ArticleController.add(argv[2], argv[3], argv[4], argv[5])
             break;
         case "read_one":
-            ArticleController.read_one()
+            ArticleController.read_one(argv[2])
             break;
         case "read_all":
             ArticleController.read_all()
             break;
         case "update":
-            ArticleController.update()
+            ArticleController.update(argv[2], argv.slice(3))
             break;
         case "delete":
-            ArticleController.delete()
+            ArticleController.delete(argv[2])
             break;
         default:
             break;
