@@ -10,7 +10,7 @@ class Controller {
         } else {
             const database = args[0];
             const command = args.slice(1);
-            console.log(database, command)
+            // console.log(database, command)
             switch (database) {
                 case 'author': 
                     if (command[0] === 'read_all'){

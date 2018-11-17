@@ -12,7 +12,7 @@ class AuthorController {
             age: options[5]
         })
         .then((data) => {
-            View.displaySuccess(`Author ${data.dataValues.first_name} ke dalam data author`);
+            View.displaySuccess(`Author ${data.dataValues.first_name} disimpan ke dalam data author`);
             process.exit();
         })
         .catch((err) => {
@@ -24,6 +24,7 @@ class AuthorController {
         Author.findOne({where: {id: options[1]}})
         .then(data => {
             View.displayData(data.dataValues);
+            process.exit();
         })
         .catch(err => {
             View.displayError(err);
@@ -35,6 +36,7 @@ class AuthorController {
         .then(data => {
             let listAuthor = data.map(author => author.dataValues);
             View.displayData(listAuthor);
+            process.exit();
         })
         .catch(err => {
             View.displayError(err);

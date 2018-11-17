@@ -20,6 +20,7 @@ class TagController {
         Tag.findOne({where: {id: options[1]}})
         .then(data => {
             View.displayData(data.dataValues);
+            process.exit();
         })
         .catch(err => {
             View.displayError(err);
@@ -31,6 +32,7 @@ class TagController {
         .then(tags => {            
             let listTag = tags.map(tag => tag.dataValues);
             View.displayData(listTag);
+            process.exit();
         })
         .catch(err => {
             View.displayError(err);

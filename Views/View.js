@@ -1,3 +1,5 @@
+const Table = require('cli-table');
+
 class View {
     static help() {
         console.log(`==== documentation ============================`);
@@ -26,8 +28,32 @@ class View {
         console.log(err);
     }
     
-    static displayData(data) {
-        console.log(data);
+    static displayData(data) {        
+        let header = Object.keys(data[0]);
+        header = header.slice(0, header.length-2);
+        let cols = [];
+        if (header.length === 8) {
+            cols = [4, 15, 15, 10, 10, 5];
+        } else if (header.length === 7) {
+            cols = [4, 15, 25, 10, 10];            
+        } else if (header.length === 4) {
+            cols = [4, 15];            
+        }
+        var table = new Table({
+            head: header,
+            colWidths: cols
+        });        
+
+        data.forEach(element => {            
+            if (header.length === 6) {
+                table.push([element[header[0]], element[header[1]], element[header[2]], element[header[3]], element[header[4]], element[header[5]]]);
+            } else if (header.length === 5) {
+                table.push([element[header[0]], element[header[1]], element[header[2]], element[header[3]], element[header[4]]]);
+            } else if (header.length === 2) {
+                table.push([element[header[0]], element[header[1]]]);
+            }
+        });        
+        console.log(table.toString());
     }
 }
 

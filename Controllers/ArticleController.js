@@ -23,6 +23,7 @@ class ArticleController {
         Article.findOne({where: {id: options[1]}})
         .then(data => {
             View.displayData(data.dataValues);
+            process.exit();
         })
         .catch(err => {
             View.displayError(err);
@@ -34,6 +35,7 @@ class ArticleController {
         .then(articles => {
             let listArticles = articles.map( article => article.dataValues);
             View.displayData(listArticles);
+            process.exit();
         })
         .catch(err => {
             View.displayError(err);
@@ -44,8 +46,8 @@ class ArticleController {
         let newDataArticle = {
             title: options[2],
             body: options[3],
-            authorId: options[4],
-            tagId: options[5]
+            AuthorId: options[4],
+            TagId: options[5]
         };
 
         Article.update(newDataArticle, 
