@@ -25,9 +25,6 @@ class Controller {
                 View.displayCreate(err)
             })
         } 
-        // else if (options[0] === "Article") {
-        //     // console.log("masuk article")
-        // }
     }
 
     static readOne(options) {
@@ -38,10 +35,10 @@ class Controller {
                 }
             }).then(data => {
                 // console.log(data)
-                View.displayAuthor(data.dataValues)
+                View.displayResult(data.dataValues)
                 process.exit()
             }).catch(err => {
-                View.displayAuthor(err)
+                View.displayResult(err)
             })
         }
     }
@@ -54,11 +51,11 @@ class Controller {
                 let dataAuthor = data.map(element => {
                     return element.dataValues
                   })
-                View.displayAllAuthor(dataAuthor);
+                View.displayAll(dataAuthor);
 
                 process.exit();
             }).catch(err => {
-                View.displayAllAuthor(err);
+                View.displayAll(err);
             })
         }
     }

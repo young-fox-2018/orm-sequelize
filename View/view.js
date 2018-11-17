@@ -3,11 +3,11 @@ class View {
     static displayCreate(input) {
         console.log(input)
     }
-    static displayAuthor(input) {
+    static displayResult(input) {
         console.log(input)
     }
 
-    static displayAllAuthor(input) {
+    static displayAll(input) {
         console.log(input)
     }
 
