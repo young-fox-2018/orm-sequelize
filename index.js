@@ -18,39 +18,49 @@ switch (argv[0]) {
                 break;
             case 'erase' : AuthorController.erase(argv.slice(2))
                 break;
+            case 'findMale' : AuthorController.findMale()
+                break;
+            case 'findSenior' : AuthorController.findSenior()
+                break;
+            case 'findJunior' :  AuthorController.findJunior()
+                break;
+            case 'findReligion' : AuthorController.findReligion()
+                break;
             default: Controller.help()
                 break;
         }
         break;
     case 'tag':
         switch (argv[1]) {
-            case 'add':
+            case 'add': TagController.add(argv.slice(2))
                 break;
-            case 'read_one' :
+            case 'read_one' : TagController.read_one(argv.slice(2))
                 break;
-            case 'read_all' :
+            case 'read_all' :TagController.read_all(argv.slice(2))
                 break;
-            case 'update' :
+            case 'update' : TagController.update(argv.slice(2))
                 break;
-            case 'erase' :
+            case 'erase' : TagController.erase(argv.slice(2))
                 break;
-            default:
+            default: Controller.help()
                 break;
         }
         break;
     case 'article': 
         switch (argv[1]) {
-            case 'add':
+            case 'add': ArticleController.add(argv.slice(2))
                 break;
-            case 'read_one' :
+            case 'read_one' : ArticleController.read_one(argv.slice(2))
                 break;
-            case 'read_all' :
+            case 'read_all' : ArticleController.read_all(argv.slice(2))
                 break;
-            case 'update' :
+            case 'update' : ArticleController.update(argv.slice(2))
                 break;
-            case 'erase' :
+            case 'erase' : ArticleController.erase(argv.slice(2))
                 break;
-            default:
+            case 'findLike' : ArticleController.findLike(argv.slice(2))
+                break;
+            default: Controller.help()
                 break;
         }
         break;
