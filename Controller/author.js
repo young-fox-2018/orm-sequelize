@@ -1,11 +1,8 @@
-
 const Model = require("../models");
 const Author = Model.Author;
-const Article = Model.Article;
 const View = require("../View/view")
-const Tag = Model.Tag;
 
-class Controller {
+class AuthorController {
     static addData(options) {
     if(options[0] === "Author") {
         let objCreate = {
@@ -94,4 +91,4 @@ class Controller {
     }
 }
 
-module.exports = Controller
+module.exports = AuthorController

@@ -80,7 +80,7 @@ class ArticleController {
                     id: options[1]
                 }
             }).then(data => {
-                View.displayDestroyed("Successfully deleted data!")
+                View.displayDestroyed("Successfully deleted Article!")
                 process.exit()
             }).catch(err => {
                 View.displayDestroyed(err)

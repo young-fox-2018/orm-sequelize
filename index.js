@@ -1,32 +1,36 @@
 
 const args = process.argv.slice(2);
-const Controller = require("./Controller/controller")
-const Article = require("./Controller/article")
+const Author = require("./Author/Author");
+const Article = require("./Author/article");
+const Tags = require("./Author/tags");
 const command = args[0];
 const options = args.slice(1);
 
-// console.log(options)
-
 switch(command) {
     case "add":
-    Controller.addData(options);
+    Author.addData(options);
     Article.addDataArticle(options);
+    Tags.addTags(options);
     break;
     case "read_one" :
-    Controller.readOne(options);
+    Author.readOne(options);
     Article.readOneArticle(options);
+    Tags.readOneTags(options);
     break;
     case "read_all" :
-    Controller.readAll(options);
+    Author.readAll(options);
     Article.findAllArticle(options);
+    Tags.readAllTags(options);
     break;
     case "update" :
-    Controller.updateData(options);
+    Author.updateData(options);
     Article.updateArticle(options);
+    Tags.updateTags(options);
     case "delete" :
-    Controller.deleteData(options);
-    Article.deleteArticle(options)
+    Author.deleteData(options);
+    Article.deleteArticle(options);
+    Tags.deleteTags(options);
     break;
 }
 
-// Controller.addData()
+// Author.addData()
